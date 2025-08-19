@@ -1,0 +1,35 @@
+name: Check API Source Code
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  analyze:
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_READ_TOKEN }}
+
+    runs-on:
+      group: ${{ vars.RUNNER_GROUP }}
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable Yarn
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Typescript Build Check
+        run: yarn build:check

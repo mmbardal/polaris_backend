@@ -1,0 +1,4193 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "RMS",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "auth"
+    },
+    {
+      "name": "panel"
+    },
+    {
+      "name": "table_define"
+    },
+    {
+      "name": "table_showing"
+    },
+    {
+      "name": "vahed"
+    },
+    {
+      "name": "vahed_config"
+    },
+    {
+      "name": "permission_setting"
+    }
+  ],
+  "paths": {
+    "/auth/captcha": {
+      "get": {
+        "summary": "Get captcha",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {
+                    "image": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAA2AHsDASIAAhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAABAUAAgYDAf/EADUQAAIBAwMBBgUCBQUBAAAAAAECAwAEEQUSITETIkFRYXEGFIGhsTKRFSNSYvBCcoKS0eH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A2ZgNxfpOTLEbclVG7uuCOeKLLYYKfHoaEZr2GaRlRLmLPCqdjqPLng/alsCw3Vw3yupXcE8iH+XMuSMHqAw5wfLIoH9c5ZkhKBye+wRcAnmkk2l6vLl015oyOGBtU/NDw2mqP311QXUf6cpdhOfpGf2zQaepWYvRNZqpuP4ltPG8XY2j9iDQsV1pc6M0mqXyhDhiHnKr7ncVoNjXGS6gjO15kDf055/akQHw/KiLNeW8u0ZHbXZ3Y9QTzSi813QLa4MUGix3SrgmRUVkI9Dzmg00l3awTHZ2qyXDg95tm4geG8jwHhVTqTTRHdcWtkc4BeUO3B644H3pJZa9pV7PDFp2iq8i7jJH2CqyDHBHh1phPfw6davc3mlxWsSnAICH/wAOfQA0BEWvWUTCK61G0L/1rKu1vvwfQ/uaLbV7EW5mS4R1wSu0/qPkKys3xcLi0lCaRem0dSrTJ3QAeCchT+acaa97JZxTaZLBJbbANkjMzceGTjn3+1AWvxBYi1E85li7u5x2Lts88kDFR9WsrnYgjvX6Ou21lGfI/pHFXja4usobkeUiiEAr6EEmrTIkELS3OozLGnViyoB+wFARBeRzKpKSRFmKqsqFScDPQ0RSyxSx1GATwvcyx5wDI8i5+hIooWFqBjsE+tALcy6hHe/yreMo3dUmU4PuNvB4oS91SSANbXnyLzsrMIEZnJAUnBGPHBH1on4ifUV08LpgBlZwGO4A7fHGfGkWgrZ2jBZNMvPn3PM9wpGSfHd/p/zrQKNebWTYyTTzfK2skmxLbc2X9yT0x4Z+lH6NG+m6atncvPaNIweeTapQZ6DO0nOMdeB19DyubG51fXobG3liFta5fiXtQuTkkk8nnAwR9q0dvYQn+VPHLNCpyXZzIJPp09+OaAG8gOoKi6drc0SqcEwlpS//AFPA+nNJZPhr5jVhavf/ADkwG597YZfXBz4VqNRtdLhs5riKNIZMbcRSGHefAMBgH6igdG0i6jDX1xFbl5+8WhdxJj0bPOf2oLaj8MQtps4gU9uIzsih/lqxx06n80FpenW1j8NxvdwzRSiQ5geEO5cnHd4DHjHQ9B6V31D4gxImn201wZZDgu8a5UZx6Hz5waIsdPtTHIgub1XYYeR5i8bcePPT3xQKRazp8QQvafKK7kI0naPvGR+knLhWx7+lU1cTX2q2sE15PLCoLgI0Tr1Oe93P6fej9N1GOwu5dL1mG132rBrdokJJA/TheTnBGPGjb2F9R2S2lqIeyJKpNuQyc5ztVh9wc56UHaO/uo0UExCLHAe0kUY/3AlaVaPqMVnrF7HbNbSQP3+zhfhSOpzjpz4kYohZ765mWO50aWVcEBDLiMY6ZXAGPehNG+Qt/ibUDNKokhjKyBkG05I4B3c+WAKB/PBPqtpFcW80duzAFJEIZgp/uHGPTkVntTtpbK5hgvLh7ie5DKsjudgUDOSBjHOK1Fv2v6oYiq4wqsNiIo6ADr9qULbHU/iZnmkEiwJhghwAueOh8Wz/ANfWgdWcNrZqsEARXKgEKck4HU12tpjcQLK0MkJOe5IAGHOOaH02w/h4kRZXkjdyyggAJk9AAOKlx/FO3b5b5PsuNvabt3Txx60HaJTGirJJJKVJO5k5PPoKH1K6tohErqGmkcJEpBHJIGfYZoqadYkBA3s/CKD+o/540DdafJKN8gEzkqxAABDA8YJ6KBnpzyT1JoM9oNlfLbx3fb2tvFIc3C9mFLID4EdePzWol1CyjUE3MSEAMo3dQemB41zSxuZEVJ7nsowMCK37oA8s+X0rpDYxW06mC3iCkHe7ZLk+HJ60Ga1e9k17VEstOjDdgN79oCjZ8cEju+XnzTw6fdGHNxqBSNRkxxjCgD1JyR9aLltITMHKBSxGWUAE48D6GuUkNkshjhtI5Zh/pRR3fc9B+aDH63bS2MltfadZzTWlsT26tu2uM5zzz4nkDA45qlzqem31rl9QjdSMtBNG2F/t3Z7Qn2OK1rRWySE3zKWGAIlHd59OrfXj0Fcjp2n3M7mPT7dJFI3O0YLenT/2gyPwxayTaxLqkqG1twhEbSoXUngehxjx+9ONT1i407WIb2dvmdPdNhFuAyA+eT49OMnoaffw9UCkyyEjhRMQV9gKGuNFkmue1M3YxlcPHAi4c56sCMHy5BoFt78UW8kaLY3cZeTIEcbkMDjIGWGOTx+M1T4a0yc2MmoawhuHlJkjRv1AeB5+uPf2o+DRba0YuLG1uD/ZAsbgf7TgH7e1HRLbTuFt52t516ptKtj1VvzQcby5+Q0+S6juXEaJuMU4LEegbrnPnmgfhq5itrZp7lDDLentFeThSgwAM84A9cda76lY3MSStvivbmYskPbDlQSDtC9CBjOT086It1FtGnaM1pINokLRAoVGcIDyAozxz+aBmO1e3IMqLIwO11GQPI4PWrQq6QxrLJ2kiqAz7cbj4nHhQYs4+JLVuxOchoCCh/4nj9uaMiEojAlKM/iVBAP05oPI7eKNlKIAVQIv9q+Q8v8A4PKruSEYqASBxmpUoBvm2RLTfGN05AOG4XjP1or2qVKAW4lcSLANpdwSPAD68/iqwWrFCJpWOCcrH3FJ8+OalSgJWGJBhY1A69KvUqUFJoIrhVWaNXCsGAYdCOhrpUqUFCpL5JyuOFx0PnVLmGCaI/MRLIq97DDOPb1qVKAXT7B7eRp5ZnkkdcbGbesYznCk8+5PXHhwAwqVKASHTreC8mukD9pKQSNx2jAxwP8AOaLqVKD/2Q==",
+                    "n": "0d834d7668d783b23be14e313de3c8eb",
+                    "t": 1748873391360,
+                    "s": "3ac7e716aded1fb0c1ec0ecfd3587046bdaa693d75ecbdb9f6a48ae901ed34c2ff3a2ea369da23bd708bf60b3c2321caa66fbef4502da62193ce6ca966c75904"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Login All users",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "mobileNumber",
+                  "n",
+                  "t",
+                  "s",
+                  "value",
+                  "nationalCode"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "mobileNumber": {
+                    "type": "string",
+                    "pattern": "^09\\d{9}$",
+                    "description": "Mobile number"
+                  },
+                  "n": {
+                    "type": "string",
+                    "pattern": "^[a-fA-F0-9]{32}$"
+                  },
+                  "t": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "s": {
+                    "type": "string",
+                    "pattern": "^[a-fA-F0-9]{2,}$"
+                  },
+                  "value": {
+                    "type": "string",
+                    "maxLength": 10,
+                    "minLength": 4,
+                    "description": "captcha value"
+                  },
+                  "nationalCode": {
+                    "type": "string",
+                    "pattern": "^\\d{10}$",
+                    "description": "National Code"
+                  }
+                }
+              },
+              "example": {
+                "mobileNumber": "09190960226",
+                "n": "8cDA834F2f5F5BbDbC73ADcCFf3faE2C",
+                "t": 82720544,
+                "s": "Ac7f8E",
+                "value": "123456",
+                "nationalCode": "0200007793"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {}
+                    }
+                  },
+                  "2": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 100,
+                      "desc": "wrong username or password",
+                      "data": {}
+                    }
+                  },
+                  "3": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 5,
+                      "desc": "Otp already exists",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/auth/loginOTP": {
+      "post": {
+        "summary": "OTP Login",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "mobileNumber",
+                  "otp"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "mobileNumber": {
+                    "type": "string",
+                    "pattern": "^09\\d{9}$",
+                    "description": "Username"
+                  },
+                  "otp": {
+                    "type": "string",
+                    "pattern": "^\\d{6}$"
+                  }
+                }
+              },
+              "example": {
+                "mobileNumber": "09190960226",
+                "otp": "123456"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "permissions": [
+                          "groupEditing",
+                          "userEditing",
+                          "tablePermission",
+                          "tableCreate"
+                        ],
+                        "id": 1,
+                        "positionId": 1,
+                        "positionName": "ریاست کل",
+                        "first_name": "",
+                        "last_name": "",
+                        "active": true,
+                        "mobileNumber": "09190960226",
+                        "level": "boss"
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 4,
+                      "desc": "invalid otp",
+                      "data": {}
+                    }
+                  },
+                  "3": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "id": 22,
+                        "mobileNumber": "09001234567",
+                        "first_name": "saba",
+                        "last_name": "mashhadikhan",
+                        "active": true,
+                        "positionId": 25,
+                        "positionName": "واحد مرند",
+                        "level": "user"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/auth/registerUser": {
+      "post": {
+        "summary": "Register a simple user",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "mobileNumber",
+                      "firstName",
+                      "lastName",
+                      "branch",
+                      "nationalCode"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "mobileNumber": {
+                        "type": "string",
+                        "pattern": "^09\\d{9}$",
+                        "description": "Mobile Number"
+                      },
+                      "branch": {
+                        "type": "integer",
+                        "description": "Branch ID"
+                      },
+                      "firstName": {
+                        "type": "string",
+                        "minLength": 5,
+                        "description": "First name"
+                      },
+                      "lastName": {
+                        "type": "string",
+                        "minLength": 5,
+                        "description": "Last name"
+                      },
+                      "nationalCode": {
+                        "type": "string",
+                        "pattern": "^\\d{10}$",
+                        "description": "National Code"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "mobileNumber",
+                      "firstName",
+                      "lastName",
+                      "group",
+                      "nationalCode"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "mobileNumber": {
+                        "type": "string",
+                        "pattern": "^09\\d{9}$",
+                        "description": "Mobile Number"
+                      },
+                      "group": {
+                        "type": "integer",
+                        "description": "GroupID"
+                      },
+                      "firstName": {
+                        "type": "string",
+                        "minLength": 5,
+                        "description": "First name"
+                      },
+                      "lastName": {
+                        "type": "string",
+                        "minLength": 5,
+                        "description": "Last name"
+                      },
+                      "nationalCode": {
+                        "type": "string",
+                        "pattern": "^\\d{10}$",
+                        "description": "National Code"
+                      }
+                    }
+                  }
+                ]
+              },
+              "examples": {
+                "1": {
+                  "value": {
+                    "mobileNumber": "09110000000",
+                    "branch": 18,
+                    "firstName": "Donny",
+                    "lastName": "Lind Lind",
+                    "nationalCode": "0200007793"
+                  },
+                  "summary": "Example 1"
+                },
+                "2": {
+                  "value": {
+                    "mobileNumber": "09111234567",
+                    "group": 10,
+                    "firstName": "Donny",
+                    "lastName": "Lind Lind",
+                    "nationalCode": "0200007793"
+                  },
+                  "summary": "Example 2"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {}
+                    }
+                  },
+                  "2": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 3,
+                      "desc": "duplicate entry",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/auth/registerAdmin": {
+      "post": {
+        "summary": "Register Admin",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "firstName",
+                  "lastName",
+                  "mobileNumber",
+                  "nationalCode",
+                  "positionId"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "mobileNumber": {
+                    "type": "string",
+                    "pattern": "^09\\d{9}$",
+                    "description": "Mobile Number"
+                  },
+                  "firstName": {
+                    "type": "string",
+                    "minLength": 5,
+                    "description": "First name"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "minLength": 5,
+                    "description": "Last name"
+                  },
+                  "nationalCode": {
+                    "type": "string",
+                    "pattern": "^\\d{10}$",
+                    "description": "National Code"
+                  },
+                  "positionId": {
+                    "type": "integer",
+                    "description": "Position ID"
+                  }
+                }
+              },
+              "example": {
+                "mobileNumber": "09141234568",
+                "firstName": "Brennan",
+                "lastName": "Koch-Koch",
+                "nationalCode": "1234567890",
+                "positionId": 5
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {}
+                    }
+                  },
+                  "2": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 3,
+                      "desc": "duplicate entry",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "summary": "Log out user",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "401": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/panel/checkPosition": {
+      "post": {
+        "summary": "Check defects on admin positions",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "panel"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {
+                    "result": [
+                      {
+                        "positionId": 5,
+                        "positionName": "test deputy",
+                        "level": "deputy"
+                      },
+                      {
+                        "positionId": 1,
+                        "positionName": "ریاست کل",
+                        "level": "boss",
+                        "active": false
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/panel/assign": {
+      "post": {
+        "summary": "Assign Position or branch or group to user",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "panel"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "action",
+                  "userId",
+                  "actionId"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "position",
+                      "branch",
+                      "group"
+                    ],
+                    "description": "Type of assignment (assign position or branch or group)"
+                  },
+                  "userId": {
+                    "type": "integer",
+                    "description": "User ID"
+                  },
+                  "actionId": {
+                    "type": "integer",
+                    "description": "destination ID"
+                  }
+                }
+              },
+              "examples": {
+                "1": {
+                  "value": {
+                    "action": "group",
+                    "userId": 30,
+                    "actionId": 150
+                  },
+                  "summary": "Example 1"
+                },
+                "2": {
+                  "value": {
+                    "action": "position",
+                    "userId": 35,
+                    "actionId": 5
+                  },
+                  "summary": "Example 2"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/panel/approveTable": {
+      "post": {
+        "summary": "Approve a table in approval flow",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "panel"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tableId",
+                  "func"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableId": {
+                    "type": "integer",
+                    "description": "Table ID"
+                  },
+                  "func": {
+                    "type": "string",
+                    "enum": [
+                      "approve",
+                      "disApprove"
+                    ],
+                    "description": "Approve or disApprove a template in flow"
+                  }
+                }
+              },
+              "examples": {
+                "1": {
+                  "value": {
+                    "tableId": 25,
+                    "func": "approve"
+                  },
+                  "summary": "Example 1"
+                },
+                "2": {
+                  "value": {
+                    "tableId": 25,
+                    "func": "disApprove"
+                  },
+                  "summary": "Example 2"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/panel/getAdminSubGroup": {
+      "post": {
+        "summary": "Get subgroup of a admin ",
+        "deprecated": false,
+        "description": "boss => his deputies\ndeputy => his manager\n....",
+        "tags": [
+          "panel"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {
+                    "result": [
+                      {
+                        "id": 9,
+                        "positionName": "expert 1",
+                        "first_name": "",
+                        "last_name": "",
+                        "role": "expert"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/panel/getUser": {
+      "post": {
+        "summary": "get a user info",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "panel"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "Id"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "Id": {
+                    "type": "integer",
+                    "description": "ID of user"
+                  }
+                }
+              },
+              "example": {
+                "Id": 1
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {
+                    "result": {
+                      "id": 1,
+                      "positionId": 1,
+                      "positionName": "ریاست کل",
+                      "first_name": "سعید",
+                      "last_name": "آریانمهر",
+                      "active": true,
+                      "mobileNumber": "09190960226",
+                      "level": "boss",
+                      "permissions": [
+                        "groupEditing",
+                        "userEditing",
+                        "tablePermission"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/panel/search": {
+      "post": {
+        "summary": "Search user or table",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "panel"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "action"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "user",
+                      "table"
+                    ],
+                    "description": "Search user or table if name is empty return all users or all tables"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "1": {
+                  "value": {
+                    "action": "table"
+                  },
+                  "summary": "Example 1"
+                },
+                "2": {
+                  "value": {
+                    "action": "table",
+                    "name": "eng"
+                  },
+                  "summary": "Example 2"
+                },
+                "3": {
+                  "value": {
+                    "action": "user",
+                    "name": "مع"
+                  },
+                  "summary": "Example 3"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "result": [
+                          {
+                            "userId": 1,
+                            "first_name": "سعید",
+                            "last_name": "اریانمهر",
+                            "mobileNumber": "09190960226",
+                            "nationalCode": "0200007793",
+                            "active": true,
+                            "positionName": "ریاست کل",
+                            "level": "boss",
+                            "positionId": 1
+                          },
+                          {
+                            "userId": 7,
+                            "first_name": "",
+                            "last_name": "",
+                            "mobileNumber": "091211111111",
+                            "nationalCode": "0200007793",
+                            "active": true,
+                            "positionName": "معاونت بازرسی و امور استان ها",
+                            "level": "deputy",
+                            "positionId": 2
+                          },
+                          {
+                            "userId": 8,
+                            "first_name": "مهدی",
+                            "last_name": "بردال",
+                            "mobileNumber": "09122222222",
+                            "nationalCode": "0200007793",
+                            "active": true,
+                            "positionName": "مدیر کل کارگزینی",
+                            "level": "manager",
+                            "positionId": 3
+                          },
+                          {
+                            "userId": 9,
+                            "first_name": "Tommie",
+                            "last_name": "Fisher",
+                            "mobileNumber": "09123333333",
+                            "nationalCode": "0200007793",
+                            "active": true,
+                            "positionName": "کارشناس مسئول کارگزینی",
+                            "level": "expert",
+                            "positionId": 4
+                          },
+                          {
+                            "userId": 16,
+                            "first_name": "",
+                            "last_name": "",
+                            "mobileNumber": "09032969075",
+                            "nationalCode": "0200007793",
+                            "active": true,
+                            "branchName": "واحد تبریز",
+                            "groupName": "rafsanjan",
+                            "branchId": 2,
+                            "groupId": 7
+                          },
+                          {
+                            "userId": 21,
+                            "first_name": "dunald",
+                            "last_name": "trump",
+                            "mobileNumber": "09191111111",
+                            "nationalCode": "0200007793",
+                            "active": true,
+                            "branchName": "واحد تهران مرکزی",
+                            "groupName": null,
+                            "branchId": 1,
+                            "groupId": null
+                          },
+                          {
+                            "userId": 22,
+                            "first_name": "",
+                            "last_name": "",
+                            "mobileNumber": "09001234567",
+                            "nationalCode": "0200007793",
+                            "active": true,
+                            "branchName": "واحد مرند",
+                            "groupName": "mehdi",
+                            "branchId": 25,
+                            "groupId": 16
+                          },
+                          {
+                            "userId": 23,
+                            "first_name": "Donny",
+                            "last_name": "Lind Lind",
+                            "mobileNumber": "09110000000",
+                            "nationalCode": "0200007793",
+                            "active": true,
+                            "branchName": "واحد تربت جام",
+                            "groupName": null,
+                            "branchId": 18,
+                            "groupId": null
+                          },
+                          {
+                            "userId": 27,
+                            "first_name": "mohammad",
+                            "last_name": "mohammad",
+                            "mobileNumber": "09350664602",
+                            "nationalCode": "8150438467",
+                            "active": true,
+                            "branchName": "واحد سراب",
+                            "groupName": "mehdi",
+                            "branchId": 24,
+                            "groupId": 16
+                          },
+                          {
+                            "userId": 28,
+                            "first_name": "eliza",
+                            "last_name": "bethi",
+                            "mobileNumber": "09350664603",
+                            "nationalCode": "2580306056",
+                            "active": true,
+                            "branchName": "واحد بناب",
+                            "groupName": "mehdi",
+                            "branchId": 43,
+                            "groupId": 16
+                          },
+                          {
+                            "userId": 29,
+                            "first_name": "eliza",
+                            "last_name": "mohammad",
+                            "mobileNumber": "09350664604",
+                            "nationalCode": "2580306056",
+                            "active": true,
+                            "branchName": "واحد مراغه",
+                            "groupName": "mehdi",
+                            "branchId": 46,
+                            "groupId": 16
+                          },
+                          {
+                            "userId": 30,
+                            "first_name": "salarr",
+                            "last_name": "salari",
+                            "mobileNumber": "09350664606",
+                            "nationalCode": "2580306056",
+                            "active": true,
+                            "branchName": "واحد شبستر",
+                            "groupName": null,
+                            "branchId": 94,
+                            "groupId": null
+                          },
+                          {
+                            "userId": 21,
+                            "first_name": "dunald",
+                            "last_name": "trump",
+                            "mobileNumber": "09191111111",
+                            "nationalCode": "0200007793",
+                            "active": true,
+                            "groupName": "شرق",
+                            "groupId": 4
+                          },
+                          {
+                            "userId": 33,
+                            "first_name": "zarii",
+                            "last_name": "zareyee",
+                            "mobileNumber": "09350664609",
+                            "nationalCode": "2580306056",
+                            "active": true,
+                            "groupName": "رشت",
+                            "groupId": 8
+                          },
+                          {
+                            "userId": 13,
+                            "first_name": "",
+                            "last_name": "",
+                            "mobileNumber": "$2b$12$7bGQNPT2WWPIxmF8ZbqVBexySjrfg6JRU/DPjKgPwutNlczUvwTsW",
+                            "active": true
+                          },
+                          {
+                            "userId": 14,
+                            "first_name": "",
+                            "last_name": "",
+                            "mobileNumber": "$2b$12$4dRL2nx8pw/kIvg2GBJAi.AILKk6fqPilOyEas6jQLcc/qR2GuoEK",
+                            "active": true
+                          },
+                          {
+                            "userId": 15,
+                            "first_name": "",
+                            "last_name": "",
+                            "mobileNumber": "$2b$12$x3982V14TVVmgZk1zaiztu10CG7Jl9kFu2NgoAat0unE/1EZUK8Qa",
+                            "active": true
+                          },
+                          {
+                            "userId": 18,
+                            "first_name": "Donny",
+                            "last_name": "Lind Lind",
+                            "mobileNumber": "09918731694",
+                            "active": false
+                          },
+                          {
+                            "userId": 19,
+                            "first_name": "Brennan",
+                            "last_name": "Koch-Koch",
+                            "mobileNumber": "09121434560",
+                            "active": true
+                          },
+                          {
+                            "userId": 20,
+                            "first_name": "akbar",
+                            "last_name": "gholami",
+                            "mobileNumber": "09039544054",
+                            "active": false
+                          },
+                          {
+                            "userId": 24,
+                            "first_name": "Donny",
+                            "last_name": "Lind Lind",
+                            "mobileNumber": "09111234567",
+                            "active": true
+                          },
+                          {
+                            "userId": 25,
+                            "first_name": "Brennan",
+                            "last_name": "Koch-Koch",
+                            "mobileNumber": "09131234568",
+                            "active": true
+                          },
+                          {
+                            "userId": 26,
+                            "first_name": "aaaaaa",
+                            "last_name": "bbbbbb",
+                            "mobileNumber": "09350664601",
+                            "active": true
+                          },
+                          {
+                            "userId": 31,
+                            "first_name": "fateme",
+                            "last_name": "qobafi",
+                            "mobileNumber": "09350664607",
+                            "active": true
+                          },
+                          {
+                            "userId": 32,
+                            "first_name": "shirin",
+                            "last_name": "shirini",
+                            "mobileNumber": "09350664608",
+                            "active": true
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "Success 2",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "result": [
+                          {
+                            "id": 1,
+                            "table_title_FA": "english",
+                            "serial_number": "1",
+                            "deadline": "2030-05-30T20:30:00.000Z",
+                            "table_definition_id": 1,
+                            "table_title_id": 2
+                          },
+                          {
+                            "id": 24,
+                            "table_title_FA": "123",
+                            "serial_number": "5b27001207d44dfc9d25824961669c8c",
+                            "deadline": "2026-10-04T20:30:00.000Z",
+                            "table_definition_id": 21,
+                            "table_title_id": 16
+                          },
+                          {
+                            "id": 25,
+                            "table_title_FA": "english",
+                            "serial_number": "9a6ba89a18014ee6a90dc029ffc7994d",
+                            "deadline": "2026-10-09T20:30:00.000Z",
+                            "table_definition_id": 8,
+                            "table_title_id": 2
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/panel/changePersonalInfo": {
+      "post": {
+        "summary": "Change personal  info and enable or disable a user (admin or simple user )",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "panel"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "firstName",
+                  "lastName",
+                  "userId",
+                  "mobileNumber",
+                  "nationalCode"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "description": "First Name"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "description": "Last Name"
+                  },
+                  "userId": {
+                    "type": "integer",
+                    "description": "User ID"
+                  },
+                  "mobileNumber": {
+                    "type": "string",
+                    "pattern": "^09\\d{9}$",
+                    "description": "Mobile Number"
+                  },
+                  "nationalCode": {
+                    "type": "string",
+                    "pattern": "^\\d{10}$",
+                    "description": "Position Name"
+                  }
+                }
+              },
+              "example": {
+                "firstName": "Tommie",
+                "lastName": "Fisher",
+                "userId": 9,
+                "mobileNumber": "09123333333",
+                "nationalCode": "0200007793"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/panel/exportTable": {
+      "post": {
+        "summary": "Download data for a table ",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "panel"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tableId"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableId": {
+                    "type": "integer",
+                    "description": "Table ID"
+                  }
+                }
+              },
+              "examples": {
+                "2": {
+                  "value": {
+                    "tableId": 25
+                  },
+                  "summary": "Example 2"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": "mehdi\n1399/12/29\n1403/01/05\n1399/12/29\n1403/01/05\n1399/12/29"
+                  },
+                  "2": {
+                    "summary": "Success",
+                    "value": "mehdi\n1399/12/29\n1403/01/05\n1399/12/29\n1403/01/05\n1399/12/29"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/tableDefine/newTable": {
+      "post": {
+        "summary": "Create a new table",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "table_define"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tableName",
+                  "deadline",
+                  "fields"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableName": {
+                    "type": "string",
+                    "description": "Table Name"
+                  },
+                  "deadline": {
+                    "type": "string",
+                    "description": "Deadline of a serie"
+                  },
+                  "fields": {
+                    "type": "array",
+                    "description": "fields property for table",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "nullable",
+                        "name",
+                        "model"
+                      ],
+                      "properties": {
+                        "comboBoxValues": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "description": "Items of combo Box"
+                          },
+                          "description": "If type of field is combo Box this field is sent"
+                        },
+                        "nullable": {
+                          "type": "boolean",
+                          "description": "Field can be null in sending data ?"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the field"
+                        },
+                        "model": {
+                          "type": "string",
+                          "description": "Type of data (anyThings means simple string)",
+                          "enum": [
+                            "anyThings",
+                            "phoneNumber",
+                            "homeNumber",
+                            "nationalCode",
+                            "comboBox",
+                            "decimal",
+                            "date"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "tableName": "akbar",
+                "deadline": "2026-10-10",
+                "fields": [
+                  {
+                    "nullable": false,
+                    "name": "Miranda Gleichner",
+                    "model": "anyThings"
+                  },
+                  {
+                    "nullable": false,
+                    "name": "Traci Trantow",
+                    "model": "date"
+                  },
+                  {
+                    "comboBoxValues": [
+                      "Lorem laborum laboris in ametm",
+                      "est elit.ljblkolol;holl",
+                      "minim aliqua nulla commodo"
+                    ],
+                    "nullable": true,
+                    "name": "Luz Nolan",
+                    "model": "comboBox"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {}
+                    }
+                  },
+                  "2": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 3,
+                      "desc": "duplicate entry",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/tableDefine/TableTitlesAcceptance": {
+      "post": {
+        "summary": "Get table titles",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "table_define"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tableName"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableName": {
+                    "type": "string",
+                    "description": "Table title"
+                  }
+                }
+              },
+              "example": {
+                "tableName": "Dr. Ebony Ernser"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {}
+                    }
+                  },
+                  "2": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 3,
+                      "desc": "duplicate entry",
+                      "data": {}
+                    }
+                  },
+                  "3": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "acceptedName": true
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/tableDefine/getSettingTable": {
+      "post": {
+        "summary": "Table Setting",
+        "deprecated": false,
+        "description": "get property of a teble serie include fields - deadline - approve table and ....",
+        "tags": [
+          "table_define"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tableId"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableId": {
+                    "type": "integer",
+                    "description": "Table Serie ID"
+                  }
+                }
+              },
+              "example": {
+                "tableId": 1
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "columns_properties": [
+                          {
+                            "name": "Miranda Gleichner",
+                            "model": "anyThings",
+                            "regex": "",
+                            "nullable": false
+                          },
+                          {
+                            "name": "Traci Trantow",
+                            "model": "date",
+                            "regex": "^1[34][0-9][0-9]/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$",
+                            "nullable": false
+                          },
+                          {
+                            "name": "Luz Nolan",
+                            "model": "comboBox",
+                            "regex": "^(?:Lorem laborum laboris in ametm|est elit.ljblkolol;holl|minim aliqua nulla commodo)$",
+                            "nullable": true,
+                            "comboBoxValues": [
+                              "Lorem laborum laboris in ametm",
+                              "est elit.ljblkolol;holl",
+                              "minim aliqua nulla commodo"
+                            ]
+                          }
+                        ],
+                        "table_title_FA": "english",
+                        "deadline": "2026-10-09T20:30:00.000Z",
+                        "serial_number": "c90e2e3564724d2d8f109b4d77443eea",
+                        "approval_level": 0,
+                        "previous_approval_level": 0,
+                        "write_permission": 0,
+                        "change_lock": 1,
+                        "serie_id": 5
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "columns_properties": [
+                          {
+                            "name": "Miranda Gleichner",
+                            "model": "anyThings",
+                            "regex": "",
+                            "nullable": false
+                          },
+                          {
+                            "name": "Traci Trantow",
+                            "model": "date",
+                            "regex": "^1[34][0-9][0-9]/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$",
+                            "nullable": false
+                          },
+                          {
+                            "name": "Luz Nolan",
+                            "model": "comboBox",
+                            "regex": "^(?:Lorem laborum laboris in ametm|est elit.ljblkolol;holl|minim aliqua nulla commodo)$",
+                            "nullable": true,
+                            "comboBoxValues": [
+                              "Lorem laborum laboris in ametm",
+                              "est elit.ljblkolol;holl",
+                              "minim aliqua nulla commodo"
+                            ]
+                          }
+                        ],
+                        "table_title_FA": "english",
+                        "deadline": "2026-10-09T20:30:00.000Z",
+                        "serial_number": "c90e2e3564724d2d8f109b4d77443eea",
+                        "approval_level": 0,
+                        "previous_approval_level": 0,
+                        "write_permission": 0,
+                        "change_lock": 1,
+                        "serie_id": 5,
+                        "definition_id": 15
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/tableDefine/addColumn": {
+      "post": {
+        "summary": "Reuse a table",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "table_define"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "definitionId",
+                  "deadline",
+                  "fields"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "definitionId": {
+                    "type": "integer",
+                    "description": "Definition ID(table property(for reuse a table))"
+                  },
+                  "deadline": {
+                    "type": "string",
+                    "description": "Deadline of a serie"
+                  },
+                  "fields": {
+                    "type": "array",
+                    "description": "fields property for table",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "nullable",
+                        "name",
+                        "model"
+                      ],
+                      "properties": {
+                        "comboBoxValues": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "description": "Items of combo Box"
+                          },
+                          "description": "If type of field is combo Box this field is sent"
+                        },
+                        "nullable": {
+                          "type": "boolean",
+                          "description": "Field can be null in sending data ?"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the field"
+                        },
+                        "model": {
+                          "type": "string",
+                          "description": "Type of data (anyThings means simple string)",
+                          "enum": [
+                            "anyThings",
+                            "phoneNumber",
+                            "homeNumber",
+                            "nationalCode",
+                            "comboBox",
+                            "decimal",
+                            "date"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "definitionId": 15,
+                "deadline": "2026-10-10",
+                "fields": [
+                  {
+                    "nullable": false,
+                    "name": "Miranda Gleichner",
+                    "model": "anyThings"
+                  },
+                  {
+                    "nullable": false,
+                    "name": "Traci Trantow",
+                    "model": "date"
+                  },
+                  {
+                    "comboBoxValues": [
+                      "Lorem laborum laboris in ametm",
+                      "est elit.ljblkolol;holl",
+                      "minim aliqua nulla commodo"
+                    ],
+                    "nullable": true,
+                    "name": "Luz Nolan",
+                    "model": "comboBox"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {}
+                    }
+                  },
+                  "2": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 10,
+                      "desc": "Active table is exist",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/tableDefine/editTable": {
+      "post": {
+        "summary": "Edit a table",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "table_define"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "serieId",
+                  "deadline",
+                  "fields"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableName": {
+                    "type": "string",
+                    "description": "Table Name"
+                  },
+                  "serieId": {
+                    "type": "integer",
+                    "description": "serie ID(table property(for edit a table))"
+                  },
+                  "deadline": {
+                    "type": "string",
+                    "description": "Deadline of a serie"
+                  },
+                  "fields": {
+                    "type": "array",
+                    "description": "fields property for table",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "nullable",
+                        "name",
+                        "model"
+                      ],
+                      "properties": {
+                        "comboBoxValues": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "description": "Items of combo Box"
+                          },
+                          "description": "If type of field is combo Box this field is sent"
+                        },
+                        "nullable": {
+                          "type": "boolean",
+                          "description": "Field can be null in sending data ?"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the field"
+                        },
+                        "model": {
+                          "type": "string",
+                          "description": "Type of data (anyThings means simple string)",
+                          "enum": [
+                            "anyThings",
+                            "phoneNumber",
+                            "homeNumber",
+                            "nationalCode",
+                            "comboBox",
+                            "decimal",
+                            "date"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "tableName": "hdefwefra",
+                "serieId": 19,
+                "deadline": "2026-10-10",
+                "fields": [
+                  {
+                    "nullable": false,
+                    "name": "Miranda Gleichner",
+                    "model": "anyThings"
+                  },
+                  {
+                    "nullable": false,
+                    "name": "Traci Trantow",
+                    "model": "date"
+                  },
+                  {
+                    "comboBoxValues": [
+                      "Lorem laborum laboris in ametm",
+                      "est elit.ljblkolol;holl",
+                      "minim aliqua nulla commodo"
+                    ],
+                    "nullable": true,
+                    "name": "Luz Nolan",
+                    "model": "comboBox"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/tableShow/showDataProperty": {
+      "post": {
+        "summary": "Return property of table",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "table_showing"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tableId"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableId": {
+                    "type": "integer",
+                    "description": "Table ID"
+                  }
+                }
+              },
+              "example": {
+                "tableId": 22
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {
+                    "result": {
+                      "row": [
+                        {
+                          "name": "Miranda Gleichner",
+                          "model": "string"
+                        },
+                        {
+                          "name": "Traci Trantow",
+                          "model": "date"
+                        },
+                        {
+                          "name": "Luz Nolan",
+                          "model": "string"
+                        }
+                      ],
+                      "name": "akbarzadeh",
+                      "deadline": "2026-10-04T20:30:00.000Z"
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/tableShow/getTableFlow": {
+      "post": {
+        "summary": "List of tables that is in your flow",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "table_showing"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "offset",
+                  "active"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "offset": {
+                    "type": "integer",
+                    "description": "Table offset"
+                  },
+                  "active": {
+                    "type": "boolean",
+                    "description": "Table status"
+                  },
+                  "tableName": {
+                    "type": "string",
+                    "description": "Table name"
+                  },
+                  "deadline": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Defined date"
+                  }
+                }
+              },
+              "examples": {
+                "1": {
+                  "value": {
+                    "offset": 1,
+                    "active": false
+                  },
+                  "summary": "1"
+                },
+                "2": {
+                  "value": {
+                    "offset": 1,
+                    "active": true,
+                    "tableName": "engl",
+                    "deadline": "2025-06-07"
+                  },
+                  "summary": "Example 2"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {
+                    "totalItems": "1",
+                    "result": [
+                      {
+                        "serie_id": 1,
+                        "definition_id": 1,
+                        "title_id": 2,
+                        "write_permission": 1,
+                        "change_lock": 1,
+                        "deadline": "2030-05-30T20:30:00.000Z",
+                        "approval_level": 0,
+                        "serial_number": "1",
+                        "table_title_FA": "english",
+                        "created": "2025-05-31T11:36:31.000Z",
+                        "modified": "2025-06-09T14:15:47.000Z",
+                        "positionName": "ریاست کل",
+                        "status": "Under review",
+                        "myAction": false
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/tableShow/TableRecipientStatus": {
+      "post": {
+        "summary": "Table Reciver Status",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "table_showing"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tableId"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableId": {
+                    "type": "integer",
+                    "description": "Table ID"
+                  }
+                }
+              },
+              "example": {
+                "tableId": 24
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {
+                    "result": [
+                      {
+                        "userID": 16,
+                        "first_name": "",
+                        "branchID": 2,
+                        "last_name": "",
+                        "status": "approved",
+                        "branchName": "واحد تبریز",
+                        "groupName": "حوزه اصفهان",
+                        "provinceName": "آذربایجان شرقی",
+                        "statusChangeDate": "2025-07-09T08:22:30.000Z",
+                        "submissionDate": "2025-06-28T10:56:58.000Z"
+                      },
+                      {
+                        "userID": 21,
+                        "first_name": "dunald",
+                        "branchID": 1,
+                        "last_name": "trump",
+                        "status": "notSent",
+                        "branchName": "واحد تهران مرکزی",
+                        "groupName": "حوزه اصفهان",
+                        "provinceName": "تهران",
+                        "statusChangeDate": null,
+                        "submissionDate": null
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/tableShow/showData": {
+      "post": {
+        "summary": "Table Data",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "table_showing"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tableId"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableId": {
+                    "type": "integer",
+                    "description": "Table ID"
+                  }
+                }
+              },
+              "example": {
+                "tableId": 25
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {
+                    "result": [
+                      {
+                        "data": {
+                          "mehdi": "1399/12/29"
+                        },
+                        "groupName": "حوزه اصفهان",
+                        "branchName": "واحد تبریز",
+                        "provinceName": "آذربایجان شرقی"
+                      },
+                      {
+                        "data": {
+                          "mehdi": "1403/01/05"
+                        },
+                        "groupName": "حوزه اصفهان",
+                        "branchName": "واحد تبریز",
+                        "provinceName": "آذربایجان شرقی"
+                      },
+                      {
+                        "data": {
+                          "mehdi": "1399/12/29"
+                        },
+                        "groupName": "حوزه اصفهان",
+                        "branchName": "واحد تبریز",
+                        "provinceName": "آذربایجان شرقی"
+                      },
+                      {
+                        "data": {
+                          "mehdi": "1403/01/05"
+                        },
+                        "groupName": "حوزه اصفهان",
+                        "branchName": "واحد تبریز",
+                        "provinceName": "آذربایجان شرقی"
+                      },
+                      {
+                        "data": {
+                          "mehdi": "1399/12/29"
+                        },
+                        "groupName": "حوزه اصفهان",
+                        "branchName": "واحد تبریز",
+                        "provinceName": "آذربایجان شرقی"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/vahed/getBranchTables": {
+      "post": {
+        "summary": "Get list of tables for a branch",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "vahed"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "offset",
+                  "active"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "offset": {
+                    "type": "integer",
+                    "description": "Offset of rows"
+                  },
+                  "active": {
+                    "type": "boolean",
+                    "description": "Active tables or all tables"
+                  }
+                }
+              },
+              "example": {
+                "offset": 1,
+                "active": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {
+                    "totalItems": "2",
+                    "result": [
+                      {
+                        "id": 5,
+                        "table_title_FA": "english",
+                        "comment": null,
+                        "status": "notSent",
+                        "change_lock": 1
+                      },
+                      {
+                        "id": 1,
+                        "table_title_FA": "farsi",
+                        "comment": null,
+                        "status": "notSent",
+                        "change_lock": 1
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/vahed/getGroupTables": {
+      "post": {
+        "summary": "Get list of tables for a group",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "vahed"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "offset",
+                  "active"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "offset": {
+                    "type": "integer",
+                    "description": "Offset of rows"
+                  },
+                  "active": {
+                    "type": "boolean",
+                    "description": "Active tables or disable tables"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {
+                    "totalItems": "4",
+                    "result": [
+                      {
+                        "id": 25,
+                        "serial_number": "9a6ba89a18014ee6a90dc029ffc7994d",
+                        "name": "واحد تبریز",
+                        "branchID": 2,
+                        "status": "sent",
+                        "userID": 16,
+                        "table_title_FA": "english",
+                        "deadline": "2026-10-09T20:30:00.000Z"
+                      },
+                      {
+                        "id": 1,
+                        "serial_number": "1",
+                        "name": "واحد تبریز",
+                        "branchID": 2,
+                        "status": "notSent",
+                        "userID": 16,
+                        "table_title_FA": "english",
+                        "deadline": "2030-05-30T20:30:00.000Z"
+                      },
+                      {
+                        "id": 24,
+                        "serial_number": "5b27001207d44dfc9d25824961669c8c",
+                        "name": "واحد تهران مرکزی",
+                        "branchID": 1,
+                        "status": "notSent",
+                        "userID": 21,
+                        "table_title_FA": "123",
+                        "deadline": "2026-10-04T20:30:00.000Z"
+                      },
+                      {
+                        "id": 1,
+                        "serial_number": "1",
+                        "name": "واحد تهران مرکزی",
+                        "branchID": 1,
+                        "status": "approved",
+                        "userID": 21,
+                        "table_title_FA": "english",
+                        "deadline": "2030-05-30T20:30:00.000Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/vahed/approveTableBranch": {
+      "post": {
+        "summary": "Approve a data from a branch",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "vahed"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tableId",
+                  "action",
+                  "branchId"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableId": {
+                    "type": "integer",
+                    "description": "Table serie ID"
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "approve",
+                      "disapprove"
+                    ],
+                    "description": "Approve or disapprove a data"
+                  },
+                  "branchId": {
+                    "type": "integer",
+                    "description": "Branch ID"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "description": "Reason for accept or reject a table"
+                  }
+                }
+              },
+              "example": {
+                "tableId": 24,
+                "action": "disapprove",
+                "branchId": 2,
+                "comment": "qui quis pariatur deserunt"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/vahed/uploadBranchData": {
+      "post": {
+        "summary": "Upload Branch Data",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "vahed"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "format": "binary",
+                    "type": "string",
+                    "example": ""
+                  },
+                  "tableId": {
+                    "type": "string",
+                    "example": "1"
+                  }
+                }
+              },
+              "examples": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 11,
+                      "desc": " unprocessable entities",
+                      "data": {
+                        "troubled": [
+                          {
+                            "index": 2,
+                            "messages": [
+                              {
+                                "col": "mehdi",
+                                "error": "must match pattern \"^1[34][0-9][0-9]/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$\""
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 11,
+                      "desc": " unprocessable entities",
+                      "data": {
+                        "troubled": [
+                          {
+                            "index": 2,
+                            "messages": [
+                              {
+                                "col": "",
+                                "error": "must NOT have additional properties"
+                              }
+                            ]
+                          },
+                          {
+                            "index": 3,
+                            "messages": [
+                              {
+                                "col": "",
+                                "error": "must NOT have additional properties"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "3": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {}
+                    }
+                  },
+                  "4": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 11,
+                      "desc": " unprocessable entities",
+                      "data": {
+                        "troubled": [
+                          {
+                            "index": 0,
+                            "messages": [
+                              {
+                                "col": "file",
+                                "error": "[-3] CSV configuration for tableID 200 not found."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "5": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 3,
+                      "desc": "duplicate entry",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/vahed/downloadTemplate": {
+      "post": {
+        "summary": "Download template",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "vahed"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tableId"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableId": {
+                    "type": "integer",
+                    "description": "Table ID"
+                  }
+                }
+              },
+              "example": {
+                "tableId": 25
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": "mehdi"
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/vahed/downloadBranchData": {
+      "post": {
+        "summary": "Download branch data for a table",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "vahed"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tableId"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableId": {
+                    "type": "integer",
+                    "description": "Table ID"
+                  },
+                  "branchId": {
+                    "type": "integer",
+                    "description": "Branch ID"
+                  }
+                }
+              },
+              "example": {
+                "tableId": 25,
+                "branchId": 2
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": "mehdi\n1399/12/29\n1403/01/05\n1399/12/29\n1403/01/05\n1399/12/29"
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/vahed/viewBranchData": {
+      "post": {
+        "summary": "Show branch data for a table",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "vahed"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tableId",
+                  "branchId"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableId": {
+                    "type": "integer",
+                    "description": "Table ID"
+                  },
+                  "branchId": {
+                    "type": "integer",
+                    "description": "Branch ID"
+                  }
+                }
+              },
+              "example": {
+                "tableId": 25,
+                "branchId": 2
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {
+                    "metaData": {
+                      "columns": [
+                        {
+                          "name": "mehdi",
+                          "model": "date"
+                        }
+                      ],
+                      "name": "english",
+                      "deadline": "2026-10-09T20:30:00.000Z"
+                    },
+                    "row": [
+                      {
+                        "data": {
+                          "mehdi": "1399/12/29"
+                        }
+                      },
+                      {
+                        "data": {
+                          "mehdi": "1403/01/05"
+                        }
+                      },
+                      {
+                        "data": {
+                          "mehdi": "1399/12/29"
+                        }
+                      },
+                      {
+                        "data": {
+                          "mehdi": "1403/01/05"
+                        }
+                      },
+                      {
+                        "data": {
+                          "mehdi": "1399/12/29"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/vahedConfig/deleteGroup": {
+      "post": {
+        "summary": "Delete a group",
+        "deprecated": false,
+        "description": "Edit a group (edit subbranches of a specific group)",
+        "tags": [
+          "vahed_config"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "id"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "ID of group"
+                  }
+                }
+              },
+              "example": {
+                "id": 1
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/vahedConfig/check": {
+      "post": {
+        "summary": "Check Defects in branches and groups",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "vahed_config"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "checkType"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "checkType": {
+                    "type": "string",
+                    "enum": [
+                      "branchHasUser",
+                      "branchHasGroup",
+                      "groupHasUser"
+                    ],
+                    "description": "ID of group"
+                  }
+                }
+              },
+              "examples": {
+                "1": {
+                  "value": {
+                    "checkType": "branchHasGroup"
+                  },
+                  "summary": "Example 1"
+                },
+                "2": {
+                  "value": {
+                    "checkType": "branchHasUser"
+                  },
+                  "summary": "Example 2"
+                },
+                "3": {
+                  "value": {
+                    "checkType": "groupHasUser"
+                  },
+                  "summary": "Example 3"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "result": [
+                          {
+                            "branchId": 1,
+                            "branchName": "واحد تهران مرکزی",
+                            "groupId": null
+                          },
+                          {
+                            "branchId": 3,
+                            "branchName": "واحد ارومیه",
+                            "groupId": null
+                          },
+                          {
+                            "branchId": 4,
+                            "branchName": "واحد شاهرود",
+                            "groupId": null
+                          },
+                          {
+                            "branchId": 5,
+                            "branchName": "واحد یزد",
+                            "groupId": null
+                          },
+                          {
+                            "branchId": 6,
+                            "branchName": "واحد اهواز",
+                            "groupId": null
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "Success 2",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "result": [
+                          {
+                            "branchId": 3,
+                            "branchName": "واحد ارومیه",
+                            "userId": null
+                          },
+                          {
+                            "branchId": 4,
+                            "branchName": "واحد شاهرود",
+                            "userId": null
+                          },
+                          {
+                            "branchId": 5,
+                            "branchName": "واحد یزد",
+                            "userId": null
+                          },
+                          {
+                            "branchId": 6,
+                            "branchName": "واحد اهواز",
+                            "userId": null
+                          },
+                          {
+                            "branchId": 7,
+                            "branchName": "واحد قائم شهر",
+                            "userId": null
+                          },
+                          {
+                            "branchId": 43,
+                            "branchName": "واحد بناب",
+                            "userId": 28,
+                            "active": false
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "3": {
+                    "summary": "Success 2",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "result": [
+                          {
+                            "groupId": 4,
+                            "groupName": "شرق",
+                            "userId": null
+                          },
+                          {
+                            "groupId": 7,
+                            "groupName": "rafsanjan",
+                            "userId": null
+                          },
+                          {
+                            "groupId": 9,
+                            "groupName": "تهران",
+                            "userId": null
+                          },
+                          {
+                            "groupId": 10,
+                            "groupName": "انزلی",
+                            "userId": null
+                          },
+                          {
+                            "groupId": 11,
+                            "groupName": "علی ن",
+                            "userId": null
+                          },
+                          {
+                            "groupId": 16,
+                            "groupName": "mehdi",
+                            "userId": null
+                          },
+                          {
+                            "groupId": 8,
+                            "groupName": "رشت",
+                            "userId": 33,
+                            "active": false
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/vahedConfig/branches": {
+      "post": {
+        "summary": "Get list of Branches",
+        "deprecated": false,
+        "description": "Get list of all branches or list of branch for specific group",
+        "tags": [
+          "vahed_config"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "groupId": {
+                    "type": "integer",
+                    "description": "Group ID"
+                  },
+                  "branchName": {
+                    "type": "string",
+                    "description": "Branch Name",
+                    "minLength": 3
+                  }
+                }
+              },
+              "examples": {
+                "1": {
+                  "value": {
+                    "groupId": 1
+                  },
+                  "summary": "Example 1"
+                },
+                "2": {
+                  "value": {},
+                  "summary": "Example 2"
+                },
+                "3": {
+                  "value": {
+                    "branchName": "تهران"
+                  },
+                  "summary": "Example 3"
+                },
+                "4": {
+                  "value": {
+                    "groupId": 1,
+                    "branchName": "تهران"
+                  },
+                  "summary": "Example 4"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "result": [
+                          {
+                            "userId": 21,
+                            "BranchID": 1,
+                            "BranchName": "واحد تهران مرکزی",
+                            "college": null,
+                            "provinceName": "تهران",
+                            "GroupName": "حوزه اصفهان",
+                            "GroupID": 1
+                          },
+                          {
+                            "userId": 16,
+                            "BranchID": 2,
+                            "BranchName": "واحد تبریز",
+                            "college": null,
+                            "provinceName": "آذربایجان شرقی",
+                            "GroupName": "حوزه اصفهان",
+                            "GroupID": 1
+                          },
+                          {
+                            "userId": null,
+                            "BranchID": 3,
+                            "BranchName": "واحد ارومیه",
+                            "college": null,
+                            "provinceName": "آذربایجان غربی",
+                            "GroupName": "حوزه اصفهان",
+                            "GroupID": 1
+                          },
+                          {
+                            "userId": null,
+                            "BranchID": 4,
+                            "BranchName": "واحد شاهرود",
+                            "college": null,
+                            "provinceName": "سمنان",
+                            "GroupName": "حوزه اصفهان",
+                            "GroupID": 1
+                          },
+                          {
+                            "userId": null,
+                            "BranchID": 5,
+                            "BranchName": "واحد یزد",
+                            "college": null,
+                            "provinceName": "یزد",
+                            "GroupName": "حوزه اصفهان",
+                            "GroupID": 1
+                          },
+                          {
+                            "userId": null,
+                            "BranchID": 6,
+                            "BranchName": "واحد اهواز",
+                            "college": null,
+                            "provinceName": "خوزستان",
+                            "GroupName": "حوزه اصفهان",
+                            "GroupID": 1
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "result": [
+                          {
+                            "userId": 21,
+                            "BranchID": 1,
+                            "BranchName": "واحد تهران مرکزی",
+                            "college": null,
+                            "provinceName": "تهران",
+                            "GroupName": "حوزه اصفهان",
+                            "GroupID": 1
+                          },
+                          {
+                            "userId": null,
+                            "BranchID": 40,
+                            "BranchName": "واحد تهران جنوب",
+                            "college": null,
+                            "provinceName": "تهران",
+                            "GroupName": null,
+                            "GroupID": null
+                          },
+                          {
+                            "userId": null,
+                            "BranchID": 56,
+                            "BranchName": "واحد تهران شمال",
+                            "college": null,
+                            "provinceName": "تهران",
+                            "GroupName": null,
+                            "GroupID": null
+                          },
+                          {
+                            "userId": null,
+                            "BranchID": 124,
+                            "BranchName": "واحد تهران غرب",
+                            "college": null,
+                            "provinceName": "تهران",
+                            "GroupName": null,
+                            "GroupID": null
+                          },
+                          {
+                            "userId": null,
+                            "BranchID": 172,
+                            "BranchName": "واحد تهران شرق",
+                            "college": null,
+                            "provinceName": "تهران",
+                            "GroupName": null,
+                            "GroupID": null
+                          },
+                          {
+                            "userId": null,
+                            "BranchID": 388,
+                            "BranchName": "واحد تهران جنوب - دوره مشترک با دانشگاه ارفورت آلمان",
+                            "college": 863,
+                            "provinceName": "تهران",
+                            "GroupName": null,
+                            "GroupID": null
+                          },
+                          {
+                            "userId": null,
+                            "BranchID": 389,
+                            "BranchName": "واحد تهران جنوب - دوره مشترک با دانشگاه ایلمنائو آلمان",
+                            "college": 864,
+                            "provinceName": "تهران",
+                            "GroupName": null,
+                            "GroupID": null
+                          },
+                          {
+                            "userId": null,
+                            "BranchID": 390,
+                            "BranchName": "واحد تهران جنوب - دوره مشترک با دانشگاه نوردهاوزن آلمان",
+                            "college": 865,
+                            "provinceName": "تهران",
+                            "GroupName": null,
+                            "GroupID": null
+                          },
+                          {
+                            "userId": null,
+                            "BranchID": 398,
+                            "BranchName": "واحد علوم پزشکی تهران",
+                            "college": null,
+                            "provinceName": "تهران",
+                            "GroupName": null,
+                            "GroupID": null
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/vahedConfig/groups": {
+      "post": {
+        "summary": "Get groups",
+        "deprecated": false,
+        "description": "Get list of groups",
+        "tags": [
+          "vahed_config"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {
+                    "result": [
+                      {
+                        "GroupID": 1,
+                        "GroupName": "حوزه اصفهان",
+                        "positionName": "tehran Group",
+                        "first_name": "Donny",
+                        "last_name": "Lind Lind",
+                        "userId": 18
+                      },
+                      {
+                        "GroupID": 2,
+                        "GroupName": "جنوب",
+                        "positionName": null,
+                        "first_name": null,
+                        "last_name": null,
+                        "userId": null
+                      },
+                      {
+                        "GroupID": 3,
+                        "GroupName": "شرق",
+                        "positionName": "حوزه تهران",
+                        "first_name": "akbar",
+                        "last_name": "gholami",
+                        "userId": 20
+                      },
+                      {
+                        "GroupID": 4,
+                        "GroupName": "غرب",
+                        "positionName": null,
+                        "first_name": null,
+                        "last_name": null,
+                        "userId": null
+                      },
+                      {
+                        "GroupID": 5,
+                        "GroupName": "سیستان و خراسان",
+                        "positionName": null,
+                        "first_name": null,
+                        "last_name": null,
+                        "userId": null
+                      },
+                      {
+                        "GroupID": 6,
+                        "GroupName": "south eastt",
+                        "positionName": "khuzestan",
+                        "first_name": "dunald",
+                        "last_name": "trump",
+                        "userId": 21
+                      },
+                      {
+                        "GroupID": 7,
+                        "GroupName": "rafsanjan",
+                        "positionName": null,
+                        "first_name": null,
+                        "last_name": null,
+                        "userId": null
+                      },
+                      {
+                        "GroupID": 8,
+                        "GroupName": "رشت",
+                        "positionName": null,
+                        "first_name": null,
+                        "last_name": null,
+                        "userId": null
+                      },
+                      {
+                        "GroupID": 9,
+                        "GroupName": "تهران",
+                        "positionName": null,
+                        "first_name": null,
+                        "last_name": null,
+                        "userId": null
+                      },
+                      {
+                        "GroupID": 10,
+                        "GroupName": "انزلی",
+                        "positionName": "tehran Group",
+                        "first_name": "Donny",
+                        "last_name": "Lind Lind",
+                        "userId": 24
+                      },
+                      {
+                        "GroupID": 11,
+                        "GroupName": "علی ن",
+                        "positionName": null,
+                        "first_name": null,
+                        "last_name": null,
+                        "userId": null
+                      },
+                      {
+                        "GroupID": 12,
+                        "GroupName": "گلسار",
+                        "positionName": null,
+                        "first_name": null,
+                        "last_name": null,
+                        "userId": null
+                      },
+                      {
+                        "GroupID": 13,
+                        "GroupName": "bachelor",
+                        "positionName": null,
+                        "first_name": null,
+                        "last_name": null,
+                        "userId": null
+                      },
+                      {
+                        "GroupID": 14,
+                        "GroupName": "mehdi",
+                        "positionName": null,
+                        "first_name": null,
+                        "last_name": null,
+                        "userId": null
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/vahedConfig/createGroup": {
+      "post": {
+        "summary": "Create Group",
+        "deprecated": false,
+        "description": "Create a group \nhave banches or not have branches\nif a branch insert that this branch have group before that , return duplicate entry ",
+        "tags": [
+          "vahed_config"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "group Name"
+                  },
+                  "branches": {
+                    "type": "array",
+                    "description": "List of branches",
+                    "items": {
+                      "type": "integer",
+                      "description": "Branch ID"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "1": {
+                  "value": {
+                    "name": "سیستان و خراسان"
+                  },
+                  "summary": "Example 1"
+                },
+                "2": {
+                  "value": {
+                    "name": "خوزستان",
+                    "branches": [
+                      5,
+                      6,
+                      7,
+                      8
+                    ]
+                  },
+                  "summary": "Example 2"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 3,
+                      "desc": "duplicate entry",
+                      "data": {}
+                    }
+                  },
+                  "2": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/vahedConfig/editGroup": {
+      "post": {
+        "summary": "Edit a Group",
+        "deprecated": false,
+        "description": "Edit a group (edit subbranches of a specific group)",
+        "tags": [
+          "vahed_config"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "id"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "ID of group"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "group Name"
+                  },
+                  "branches": {
+                    "type": "array",
+                    "description": "List of branches",
+                    "items": {
+                      "type": "integer",
+                      "description": "Branch ID"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "1": {
+                  "value": {
+                    "id": 6,
+                    "name": "south east",
+                    "branches": [
+                      1,
+                      2,
+                      3
+                    ]
+                  },
+                  "summary": "Example 1"
+                },
+                "2": {
+                  "value": {
+                    "id": 6,
+                    "name": "test"
+                  },
+                  "summary": "Example 3"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "code": 3,
+                      "desc": "duplicate entry",
+                      "data": {}
+                    }
+                  },
+                  "2": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/permissionSetting/activate": {
+      "post": {
+        "summary": "Activate or ban user",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "permission_setting"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "action",
+                  "userId"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "activate",
+                      "ban"
+                    ],
+                    "description": "Activate or ban user"
+                  },
+                  "userId": {
+                    "type": "integer",
+                    "description": "User ID"
+                  }
+                }
+              },
+              "examples": {
+                "1": {
+                  "value": {
+                    "action": "ban",
+                    "userId": 21
+                  },
+                  "summary": "Example 1"
+                },
+                "2": {
+                  "value": {
+                    "action": "activate",
+                    "userId": 21
+                  },
+                  "summary": "Example 2"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/permissionSetting/changePermission": {
+      "post": {
+        "summary": "Change permission of admins",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "permission_setting"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "userId",
+                  "permissions"
+                ],
+                "minProperties": 2,
+                "additionalProperties": false,
+                "properties": {
+                  "userId": {
+                    "type": "integer",
+                    "description": "User ID"
+                  },
+                  "permissions": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "Permission Name",
+                          "enum": [
+                            "groupEditing",
+                            "userEditing",
+                            "tablePermission",
+                            "tableCreate"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "userId": 9,
+                "permissions": [
+                  {
+                    "name": "groupEditing"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 0,
+                  "desc": "success",
+                  "data": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/permissionSetting/setWriteAccess": {
+      "post": {
+        "summary": "Set write access to branches",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "permission_setting"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "table",
+                  "users"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "table": {
+                    "type": "integer",
+                    "description": "Table ID"
+                  },
+                  "users": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "description": "ID of branhces"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "table": 25,
+                "users": [
+                  {
+                    "id": 22
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 15,
+                  "desc": "table approve level is not 4",
+                  "data": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/permissionSetting/getTableReaders": {
+      "post": {
+        "summary": "Get list of readers of a table",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "permission_setting"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "tableId"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "tableId": {
+                    "type": "integer",
+                    "description": "Table ID"
+                  }
+                }
+              },
+              "examples": {
+                "1": {
+                  "value": {
+                    "tableId": 1
+                  },
+                  "summary": "Example 1"
+                },
+                "2": {
+                  "value": {
+                    "tableId": 1
+                  },
+                  "summary": "Example 2"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "result": [
+                          {
+                            "userId": 1,
+                            "level": "boss",
+                            "first_name": "سعید",
+                            "last_name": "اریانمهر",
+                            "permission": "read",
+                            "table_serie_id": 25
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "Success",
+                    "value": {
+                      "code": 0,
+                      "desc": "success",
+                      "data": {
+                        "result": [
+                          {
+                            "userID": 1,
+                            "role": "boss",
+                            "first_name": "",
+                            "last_name": "",
+                            "permission": "read",
+                            "table_serie_id": 1
+                          },
+                          {
+                            "userID": 8,
+                            "role": "manager",
+                            "first_name": "",
+                            "last_name": "",
+                            "permission": "read",
+                            "table_serie_id": 1
+                          },
+                          {
+                            "userID": 9,
+                            "role": "expert",
+                            "first_name": "Tommie",
+                            "last_name": "Fisher",
+                            "permission": null,
+                            "table_serie_id": null
+                          },
+                          {
+                            "userID": 13,
+                            "role": "deputy",
+                            "first_name": "",
+                            "last_name": "",
+                            "permission": null,
+                            "table_serie_id": null
+                          },
+                          {
+                            "userID": 14,
+                            "role": "manager",
+                            "first_name": "",
+                            "last_name": "",
+                            "permission": null,
+                            "table_serie_id": null
+                          },
+                          {
+                            "userID": 15,
+                            "role": "expert",
+                            "first_name": "",
+                            "last_name": "",
+                            "permission": "read",
+                            "table_serie_id": 1
+                          },
+                          {
+                            "userID": 19,
+                            "role": "deputy",
+                            "first_name": "Brennan",
+                            "last_name": "Koch-Koch",
+                            "permission": null,
+                            "table_serie_id": null
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/permissionSetting/setReadAccess": {
+      "post": {
+        "summary": "Set Read Access to a table",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "permission_setting"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "userId",
+                  "tableId",
+                  "value"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "userId": {
+                    "type": "integer",
+                    "description": "User ID"
+                  },
+                  "tableId": {
+                    "type": "integer",
+                    "description": "Table ID"
+                  },
+                  "value": {
+                    "type": "string",
+                    "enum": [
+                      "add",
+                      "delete"
+                    ],
+                    "description": "Read only"
+                  }
+                }
+              },
+              "example": {
+                "userId": 1,
+                "tableId": 25,
+                "value": "add"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "code": 15,
+                  "desc": "table approve level is not 4",
+                  "data": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "webhooks": {},
+  "components": {
+    "schemas": {},
+    "securitySchemes": {}
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000/api/v1",
+      "description": "Develop Env"
+    }
+  ],
+  "security": []
+}
