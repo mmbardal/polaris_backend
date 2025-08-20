@@ -21,27 +21,37 @@ export class Polaris {
      */
 
   async saveLogs(entity: TSubmitLogs) {
-    // 2. Prepare the log entries for insertion.
-    const logsToInsert = entity.logs.map((log) => ({
-      device_id: 1, // Use the ID directly from the context.
-      timestamp: new Date(log.timestamp),
-      latitude: log.latitude,
-      longitude: log.longitude,
-      network_type: log.networkType,
-      plmn_id: log.plmnId,
-      tac: log.tac,
-      cell_id: log.cellId,
-      rsrp: log.rsrp,
-      rsrq: log.rsrq
-    }));
+    await this.domain.transaction(async (trx) => {
+      // Find or create device logic (remains the same)
 
-    // 3. Perform a bulk insert if there are logs to add.
-    if (logsToInsert.length > 0) {
-      await this.domain.db
-        .insertInto("network_logs")
-        .values(logsToInsert)
-        .execute();
-    }
+      // Prepare log entries with all the new fields
+      const logsToInsert = entity.logs.map((log) => ({
+        device_id: 1,
+        timestamp: new Date(log.timestamp),
+        latitude: log.latitude,
+        longitude: log.longitude,
+        network_type: log.networkType,
+        plmn_id: log.plmnId,
+        tac: log.tac,
+        cell_id: log.cellId,
+        rsrp: log.rsrp,
+        rsrq: log.rsrq,
+
+        // --- ADDED FIELDS ---
+        rscp: log.rscp,
+        ecno: log.ecno,
+        rxlev: log.rxlev,
+        arfcn: log.arfcn,
+        band: log.band
+      }));
+
+      if (logsToInsert.length > 0) {
+        await trx.db
+          .insertInto("network_logs")
+          .values(logsToInsert)
+          .execute();
+      }
+    });
   }
 
   async getDashboardStats(entity: TGetDashboardStats) {

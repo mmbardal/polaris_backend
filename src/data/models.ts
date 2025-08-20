@@ -19,13 +19,29 @@ export interface Devices {
 }
 
 export interface NetworkLogs {
+  /**
+   * Absolute Radio Frequency Channel Number
+   */
+  arfcn: number | null;
+  /**
+   * Frequency Band (LTE)
+   */
+  band: string | null;
   cell_id: number | null;
   device_id: number;
+  /**
+   * Ec/No (3G)
+   */
+  ecno: number | null;
   id: Generated<string>;
   latitude: number | null;
   longitude: number | null;
   network_type: string | null;
   plmn_id: string | null;
+  /**
+   * Received Signal Code Power (3G)
+   */
+  rscp: number | null;
   /**
    * Reference Signal Received Power (for LTE)
    */
@@ -34,6 +50,10 @@ export interface NetworkLogs {
    * Reference Signal Received Quality (for LTE)
    */
   rsrq: number | null;
+  /**
+   * RxLev (2G)
+   */
+  rxlev: number | null;
   tac: number | null;
   timestamp: Date;
 }

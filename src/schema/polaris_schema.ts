@@ -4,6 +4,7 @@ import { ajv } from "@/utils/ajv";
 // =================================================================
 // == Schemas for the Android Client
 // =================================================================
+// In polaris_schema.ts
 
 const logEntryJSON = {
   type: "object",
@@ -17,9 +18,18 @@ const logEntryJSON = {
     tac: { type: "integer", nullable: true },
     cellId: { type: "integer", nullable: true },
     rsrp: { type: "integer", nullable: true },
-    rsrq: { type: "integer", nullable: true }
+    rsrq: { type: "integer", nullable: true },
+
+    // --- ADDED FIELDS ---
+    rscp: { type: "integer", nullable: true },
+    ecno: { type: "integer", nullable: true },
+    rxlev: { type: "integer", nullable: true },
+    arfcn: { type: "integer", nullable: true },
+    band: { type: "string", nullable: true }
   }
 } as const satisfies JSONSchema;
+
+// The rest of the file remains the same...
 
 const submitLogsJSON = {
   $schema: "http://json-schema.org/draft-07/schema#",
