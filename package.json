@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@paratco/eslint-config": "^2.3.0",
-    "@paratco/live-file": "^1.0.0",
     "@rollup/plugin-replace": "^6.0.2",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.4",
@@ -45,7 +44,6 @@
   "packageManager": "yarn@4.9.2",
   "dependencies": {
     "@napi-rs/canvas": "^0.1.73",
-    "@paratco/captcha": "^1.4.0",
     "adm-zip": "^0.5.16",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",

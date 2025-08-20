@@ -638,15 +638,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@paratco/captcha@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "@paratco/captcha@npm:1.4.0"
-  bin:
-    captcha-keys: dist/cli.js
-  checksum: 10c0/6f86694dc363852a1c9fe3beac45ca2ec3cea952f704e40679c44c0e5d29e8491e4da0219e2ae1cd7a0e50753cf8a5b63c6df9a639271c9744074ae7c2b34550
-  languageName: node
-  linkType: hard
-
 "@paratco/eslint-config@npm:^2.3.0":
   version: 2.3.0
   resolution: "@paratco/eslint-config@npm:2.3.0"
@@ -672,13 +663,6 @@ __metadata:
     prettier:
       optional: true
   checksum: 10c0/d02804dd581a28280a0f27745d993f9bab673dffe40bf974436b20cb42a4f98c8a642eaacc528e19e23a480b2d41e93efc719a1e2a86a03c7a2640524d37a361
-  languageName: node
-  linkType: hard
-
-"@paratco/live-file@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@paratco/live-file@npm:1.0.0"
-  checksum: 10c0/10e9b1521b2578761a7f1b28df43f891bcc711222de32ddfff2af05ba6d07c5023e7dbf01e606530d29b08c9f9eceb737647ecef80a7b810691dece32567bac8
   languageName: node
   linkType: hard
 
@@ -3223,9 +3207,7 @@ __metadata:
   resolution: "herasat@workspace:."
   dependencies:
     "@napi-rs/canvas": "npm:^0.1.73"
-    "@paratco/captcha": "npm:^1.4.0"
     "@paratco/eslint-config": "npm:^2.3.0"
-    "@paratco/live-file": "npm:^1.0.0"
     "@rollup/plugin-replace": "npm:^6.0.2"
     "@rollup/plugin-terser": "npm:^0.4.4"
     "@rollup/plugin-typescript": "npm:^12.1.4"

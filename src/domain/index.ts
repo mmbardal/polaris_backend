@@ -1,11 +1,8 @@
 import type { AccessMode, ControlledTransaction, IsolationLevel, Kysely } from "kysely";
 import { mysqlConn } from "@/data/mysql";
 import type { DB } from "@/data/models";
-import { Auth } from "@/domain/auth";
-import { GetList } from "@/domain/getlist";
-import { Vahed } from "@/domain/vahed";
-import { Panel } from "@/domain/panel";
-import { Validator } from "@/domain/validator";
+
+import { Polaris } from "@/domain/polaris";
 
 export type KyselyDB = Kysely<DB> | ControlledTransaction<DB>;
 
@@ -24,19 +21,12 @@ type TransactionFn<T> = (domain: DomainManager) => Promise<T>;
 class DomainManager {
   constructor(db?: KyselyDB) {
     this._db = db ?? mysqlConn;
-    this.auth = new Auth(this);
-    this.getList = new GetList(this);
-    this.vahed = new Vahed(this);
-    this.panel = new Panel(this);
-    this.validator = new Validator(this);
+
+    this.polaris = new Polaris(this);
   }
 
   private readonly _db: KyselyDB;
-  readonly auth: Auth;
-  readonly getList: GetList;
-  readonly vahed: Vahed;
-  readonly panel: Panel;
-  readonly validator: Validator;
+  readonly polaris: Polaris;
 
   /**
    * Checks if the current database connection is a transaction

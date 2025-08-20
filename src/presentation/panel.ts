@@ -1,79 +1,127 @@
 import type { Request, Response, Server } from "hyper-express";
-import { finishRes, validateJson, verifyUserAccessGenerator } from "@/presentation/helpers";
+import { finishRes, validateJson } from "@/presentation/helpers";
 import { Domain } from "@/domain";
 import {
-  approveS, assignS,
-  changePersonalInfoS, exportTableS, searchS
-} from "@/schema/panel_schema";
-import { getUserS } from "@/schema/getList";
+  submitLogsS,
+  getLogsS,
+  getDashboardStatsS,
+  getMapDataS,
+  createTestConfigS,
+  updateTestConfigS,
+  deleteTestConfigS
+} from "@/schema/polaris_schema";
 
-async function changePersonalInfo(req: Request, res: Response): Promise<void> {
-  const body = await validateJson(req, changePersonalInfoS);
+// =================================================================
+// == Routes for the Android Client (Data Ingestion)
+// =================================================================
 
-  await Domain.panel.changePersonalInfo(body, req.adminContext);
+/**
+ * @route POST /client/submitLogs
+ * @description Receives a batch of network and location logs from an Android client.
+ */
+async function submitLogs(req: Request, res: Response): Promise<void> {
+  // The body will be an array of log objects from the client's local DB
+  const body = await validateJson(req, submitLogsS);
 
-  finishRes(res);
+  // The domain layer handles saving these logs to the main database
+  console.log(body);
+  await Domain.polaris.saveLogs(body); // Assuming deviceContext has deviceId, etc.
+
+  // Acknowledge receipt of the data
+  finishRes(res, { message: "Logs received successfully." });
 }
 
-async function search(req: Request, res: Response): Promise<void> {
-  const body = await validateJson(req, searchS);
+// =================================================================
+// == Routes for the React Web Panel (Data Retrieval & Management)
+// =================================================================
 
-  const result = await Domain.panel.search(body, req.adminContext);
+/**
+ * @route POST /panel/dashboardStats
+ * @description Gets aggregated statistics for the main dashboard view.
+ */
+async function getDashboardStats(req: Request, res: Response): Promise<void> {
+  const body = await validateJson(req, getDashboardStatsS); // Body might contain date ranges
+
+  const result = await Domain.polaris.getDashboardStats(body);
 
   finishRes(res, { result });
 }
 
-async function checkPosition(req: Request, res: Response): Promise<void> {
-  const result = await Domain.panel.checkPosition(req.adminContext);
+/**
+ * @route POST /panel/mapData
+ * @description Retrieves log data formatted for display on a map.
+ */
+async function getMapData(req: Request, res: Response): Promise<void> {
+  // Body will contain filters like date range, network type, signal strength thresholds, etc.
+  const body = await validateJson(req, getMapDataS);
+
+  const result = await Domain.polaris.getMapData(body);
 
   finishRes(res, { result });
 }
 
-async function assign(req: Request, res: Response): Promise<void> {
-  const body = await validateJson(req, assignS);
+/**
+ * @route POST /panel/logsTable
+ * @description Fetches a paginated list of all logs for display in a table.
+ */
+async function getLogsTable(req: Request, res: Response): Promise<void> {
+  // Body will contain filters, sorting, and pagination options
+  const body = await validateJson(req, getLogsS);
 
-  await Domain.panel.assign(body, req.adminContext);
+  const result = await Domain.polaris.getLogs(body);
 
-  finishRes(res);
-}
-
-async function approve(req: Request, res: Response): Promise<void> {
-  const body = await validateJson(req, approveS);
-
-  await Domain.panel.approve(body, req.adminContext);
-
-  finishRes(res);
-}
-
-async function exportTable(req: Request, res: Response): Promise<void> {
-  const body = await validateJson(req, exportTableS);
-  const result = await Domain.panel.exportTable(body, req.adminContext);
-
-  res.setHeader("Content-Type", "text/csv");
-  res.setHeader("Content-Disposition", `attachment; filename="${result.fileName}"`);
-  res.setHeader("Content-Length", String(result.size));
-
-  res.send(result.file);
-}
-
-async function getAdminSubGroup(req: Request, res: Response): Promise<void> {
-  const result = await Domain.getList.getAdminSubGroup(req.adminContext);
   finishRes(res, { result });
 }
 
-async function getUser(req: Request, res: Response): Promise<void> {
-  const body = await validateJson(req, getUserS);
-  const result = await Domain.getList.getUser(body, req.adminContext);
-  finishRes(res, { result });
+/**
+ * @route POST /panel/createTestConfig
+ * @description Allows an admin to define a new test for clients to run.
+ */
+async function createTestConfig(req: Request, res: Response): Promise<void> {
+  const body = await validateJson(req, createTestConfigS);
+
+  await Domain.polaris.createTestConfig(body);
+
+  finishRes(res, { message: "Test configuration created." });
 }
+
+/**
+ * @route POST /panel/updateTestConfig
+ * @description Updates an existing test configuration.
+ */
+async function updateTestConfig(req: Request, res: Response): Promise<void> {
+  const body = await validateJson(req, updateTestConfigS);
+
+  await Domain.polaris.updateTestConfig(body);
+
+  finishRes(res, { message: "Test configuration updated." });
+}
+
+/**
+ * @route POST /panel/deleteTestConfig
+ * @description Deletes a test configuration.
+ */
+async function deleteTestConfig(req: Request, res: Response): Promise<void> {
+  const body = await validateJson(req, deleteTestConfigS);
+
+  await Domain.polaris.deleteTestConfig(body);
+
+  finishRes(res, { message: "Test configuration deleted." });
+}
+
+// =================================================================
+// == Route Registration
+// =================================================================
 
 export default function routes(server: Server, prefix: string): void {
-  server.post(prefix + "/approveTable", approve, { middlewares: [verifyUserAccessGenerator] });
-  server.post(prefix + "/getAdminSubGroup", getAdminSubGroup, { middlewares: [verifyUserAccessGenerator] });
-  server.post(prefix + "/getUser", getUser, { middlewares: [verifyUserAccessGenerator] });
-  server.post(prefix + "/search", search, { middlewares: [verifyUserAccessGenerator] });
-  server.post(prefix + "/checkPosition", checkPosition, { middlewares: [verifyUserAccessGenerator] });
-  server.post(prefix + "/assign", assign, { middlewares: [verifyUserAccessGenerator] });
-  server.post(prefix + "/changePersonalInfo", changePersonalInfo, { middlewares: [verifyUserAccessGenerator] });
-  server.post(prefix + "/exportTable", exportTable, { middlewares: [verifyUserAccessGenerator] });
+  // Client Routes
+  server.post(prefix + "/submitLogs", submitLogs);
+
+  // Panel Routes
+  server.post(prefix + "/dashboardStats", getDashboardStats);
+  server.post(prefix + "/mapData", getMapData);
+  server.post(prefix + "/logsTable", getLogsTable);
+  server.post(prefix + "/createTestConfig", createTestConfig);
+  server.post(prefix + "/updateTestConfig", updateTestConfig);
+  server.post(prefix + "/deleteTestConfig", deleteTestConfig);
 }

@@ -4,7 +4,6 @@ import type { Server } from "hyper-express";
 export async function initApiDoc(server: Server, openApi: string, useSSL: boolean): Promise<void> {
   assert.ok(openApi.endsWith(".json"), "openApi should have json format");
 
-  // eslint-disable-next-line import-x/no-extraneous-dependencies
   const { LiveFile } = await import("@paratco/live-file");
 
   const redocIndex = `<!doctype html>
