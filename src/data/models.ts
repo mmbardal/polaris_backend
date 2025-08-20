@@ -71,8 +71,17 @@ export interface TestConfigs {
   updated_at: Generated<Date>;
 }
 
+export interface Users {
+  access_level: Generated<"admin" | "viewer">;
+  created_at: Generated<Date>;
+  id: Generated<string>;
+  password_hash: string;
+  username: string;
+}
+
 export interface DB {
   devices: Devices;
   network_logs: NetworkLogs;
   test_configs: TestConfigs;
+  users: Users;
 }

@@ -3,6 +3,7 @@ import { mysqlConn } from "@/data/mysql";
 import type { DB } from "@/data/models";
 
 import { Polaris } from "@/domain/polaris";
+import { Auth } from "@/domain/auth";
 
 export type KyselyDB = Kysely<DB> | ControlledTransaction<DB>;
 
@@ -21,12 +22,13 @@ type TransactionFn<T> = (domain: DomainManager) => Promise<T>;
 class DomainManager {
   constructor(db?: KyselyDB) {
     this._db = db ?? mysqlConn;
-
+    this.auth = new Auth(this);
     this.polaris = new Polaris(this);
   }
 
   private readonly _db: KyselyDB;
   readonly polaris: Polaris;
+  readonly auth: Auth;
 
   /**
    * Checks if the current database connection is a transaction

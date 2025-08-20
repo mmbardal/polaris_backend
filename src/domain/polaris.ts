@@ -19,6 +19,13 @@ export class Polaris {
   /**
      * Retrieves aggregated statistics for the main dashboard.
      */
+  async getTestConfigs() {
+    return await this.domain.db
+      .selectFrom("test_configs")
+      .selectAll()
+      .orderBy("id", "asc")
+      .execute();
+  }
 
   async saveLogs(entity: TSubmitLogs) {
     await this.domain.transaction(async (trx) => {
@@ -131,7 +138,7 @@ export class Polaris {
      * Creates a new test configuration.
      */
   async createTestConfig(entity: TCreateTestConfig) {
-    return await this.domain.db
+    await this.domain.db
       .insertInto("test_configs")
       .values({
         test_type: entity.testType,
@@ -139,7 +146,6 @@ export class Polaris {
         interval_seconds: entity.intervalSeconds,
         is_enabled: entity.isEnabled === false ? 0 : 1
       })
-      .returning("id")
       .executeTakeFirstOrThrow();
   }
 
@@ -147,15 +153,17 @@ export class Polaris {
      * Updates an existing test configuration.
      */
   async updateTestConfig(entity: TUpdateTestConfig) {
-    const { configId, ...updateData } = entity;
-
-    return await this.domain.db
+    await this.domain.db
       .updateTable("test_configs")
       .set({
-        ...updateData,
-        is_enabled: updateData.isEnabled === undefined ? undefined : (updateData.isEnabled ? 1 : 0)
+
+        test_type: entity.testType,
+        target: entity.target,
+        interval_seconds: entity.intervalSeconds,
+
+        is_enabled: Number(entity.isEnabled)
       })
-      .where("id", "=", configId)
+      .where("id", "=", entity.configId)
       .execute();
   }
 
@@ -163,7 +171,7 @@ export class Polaris {
      * Deletes a test configuration.
      */
   async deleteTestConfig(entity: TDeleteTestConfig) {
-    return await this.domain.db
+    await this.domain.db
       .deleteFrom("test_configs")
       .where("id", "=", entity.configId)
       .execute();

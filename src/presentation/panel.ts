@@ -10,6 +10,7 @@ import {
   updateTestConfigS,
   deleteTestConfigS
 } from "@/schema/polaris_schema";
+import { authMiddleware, roleMiddleware } from "@/presentation/authMiddleware";
 
 // =================================================================
 // == Routes for the Android Client (Data Ingestion)
@@ -109,19 +110,29 @@ async function deleteTestConfig(req: Request, res: Response): Promise<void> {
   finishRes(res, { message: "Test configuration deleted." });
 }
 
+async function getTestConfigs(_: Request, res: Response): Promise<void> {
+  // This route doesn't need to validate a body
+  const result = await Domain.polaris.getTestConfigs();
+  finishRes(res, { result });
+}
+
 // =================================================================
 // == Route Registration
 // =================================================================
 
 export default function routes(server: Server, prefix: string): void {
   // Client Routes
+  server.use(prefix + "/panel", authMiddleware);
+
   server.post(prefix + "/submitLogs", submitLogs);
 
   // Panel Routes
+  server.post(prefix + "/getTestConfigs", getTestConfigs);
+
   server.post(prefix + "/dashboardStats", getDashboardStats);
   server.post(prefix + "/mapData", getMapData);
   server.post(prefix + "/logsTable", getLogsTable);
-  server.post(prefix + "/createTestConfig", createTestConfig);
-  server.post(prefix + "/updateTestConfig", updateTestConfig);
-  server.post(prefix + "/deleteTestConfig", deleteTestConfig);
+  server.post(prefix + "/createTestConfig", createTestConfig, roleMiddleware("admin"));
+  server.post(prefix + "/updateTestConfig", updateTestConfig, roleMiddleware("admin"));
+  server.post(prefix + "/deleteTestConfig", deleteTestConfig, roleMiddleware("admin"));
 }
