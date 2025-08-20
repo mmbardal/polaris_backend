@@ -57,7 +57,7 @@ async function getMapData(req: Request, res: Response): Promise<void> {
 
   const result = await Domain.polaris.getMapData(body);
 
-  finishRes(res, { result });
+  finishRes(res, result);
 }
 
 /**
@@ -70,7 +70,7 @@ async function getLogsTable(req: Request, res: Response): Promise<void> {
 
   const result = await Domain.polaris.getLogs(body);
 
-  finishRes(res, { result });
+  finishRes(res, result);
 }
 
 /**
