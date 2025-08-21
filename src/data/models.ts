@@ -3,166 +3,85 @@
  * Please do not edit it manually.
  */
 
-import type { ColumnType, JSONColumnType } from "kysely";
+import type { ColumnType } from "kysely";
 
 export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
   ? ColumnType<S, I | undefined, U>
   : ColumnType<T, T | undefined, T>;
 
-export type Json = ColumnType<JsonValue, string, string>;
-
-export type JsonArray = JsonValue[];
-
-export type JsonObject = {
-  [x: string]: JsonValue | undefined;
-};
-
-export type JsonPrimitive = boolean | number | string | null;
-
-export type JsonValue = JsonArray | JsonObject | JsonPrimitive;
-
-export interface AccessPermissions {
-  comment: string | null;
+export interface Devices {
+  android_version: string | null;
+  device_uuid: string;
+  first_seen: Generated<Date>;
   id: Generated<number>;
-  permission: "read" | "write";
-  position_id: number;
-  send_time: Date | null;
-  status: "approved" | "disapproved" | "notSent" | "sent" | null;
-  table_serie_id: number;
+  last_seen: Generated<Date>;
+  model: string | null;
 }
 
-export interface Branches {
-  branch: number;
-  college: number | null;
-  group: number | null;
-  id: Generated<number>;
-  name: string;
-  province: number;
-}
-
-export interface BranchProvinces {
-  id: number;
-  name: string;
-}
-
-export interface BranchUser {
-  branch_id: number;
-  id: Generated<number>;
-  user_id: number;
-}
-
-export interface Groups {
-  id: Generated<number>;
-  name: string;
-}
-
-export interface GroupUser {
-  group_id: number;
-  id: Generated<number>;
-  user_id: number;
-}
-
-export interface Permissions {
-  id: Generated<number>;
-  name: string;
-}
-
-export interface PositionPermission {
-  id: Generated<number>;
-  permission_id: number;
-  position_id: number;
-}
-
-export interface Positions {
-  id: Generated<number>;
-  level: "boss" | "deputy" | "expert" | "manager";
-  name: string;
-  parent: number | null;
-  user_id: number | null;
-}
-
-export interface TableData {
-  branch: number;
-  created_at: Generated<Date>;
-  data: Json;
+export interface NetworkLogs {
+  /**
+   * Absolute Radio Frequency Channel Number
+   */
+  arfcn: number | null;
+  /**
+   * Frequency Band (LTE)
+   */
+  band: string | null;
+  cell_id: number | null;
+  device_id: number;
+  /**
+   * Ec/No (3G)
+   */
+  ecno: number | null;
   id: Generated<string>;
-  table_id: number;
+  latitude: number | null;
+  longitude: number | null;
+  network_type: string | null;
+  plmn_id: string | null;
+  /**
+   * Received Signal Code Power (3G)
+   */
+  rscp: number | null;
+  /**
+   * Reference Signal Received Power (for LTE)
+   */
+  rsrp: number | null;
+  /**
+   * Reference Signal Received Quality (for LTE)
+   */
+  rsrq: number | null;
+  /**
+   * RxLev (2G)
+   */
+  rxlev: number | null;
+  tac: number | null;
+  timestamp: Date;
+}
+
+export interface TestConfigs {
+  created_at: Generated<Date>;
+  id: Generated<number>;
+  interval_seconds: Generated<number>;
+  is_enabled: Generated<number>;
+  /**
+   * e.g., URL for HTTP, phone number for SMS
+   */
+  target: string;
+  test_type: "DNS" | "HTTP_DOWNLOAD" | "HTTP_UPLOAD" | "PING" | "SMS";
   updated_at: Generated<Date>;
 }
 
-export interface TableDefinition {
-  columns_properties: JSONColumnType<{
-  comboBoxValues: string[];
-  model: "anyThings" | "phoneNumber" | "homeNumber" | "nationalCode" | "comboBox" | "decimal" | "date";
-  name: string;
-  nullable: boolean;
-  regex: string;
-}[]>;
-  id: Generated<number>;
-  old: JSONColumnType<{
-  comboBoxValues: string[];
-  model: "anyThings" | "phoneNumber" | "homeNumber" | "nationalCode" | "comboBox" | "decimal" | "date";
-  name: string;
-  nullable: boolean;
-  regex: string;
-}[]>;
-  table_title_id: number;
-}
-
-export interface TableLog {
-  branch_id: number;
-  id: Generated<number>;
-  table_id: number;
-  user_id: number;
-}
-
-export interface TableSeries {
-  approval_level: number;
-  boss_position_id: number;
-  change_lock: number;
-  created: Generated<Date>;
-  creator: number;
-  deadline: Date;
-  deputy_position_id: number;
-  emp_position_id: number;
-  id: Generated<number>;
-  manager_position_id: number;
-  modified: Date | null;
-  previous_approval_level: number;
-  serial_number: string;
-  table_definition_id: number;
-  write_permission: number;
-}
-
-export interface TableTitle {
-  id: Generated<number>;
-  table_title_FA: string;
-}
-
-export interface User {
-  active: Generated<boolean>;
-  first_name: Generated<string>;
-  id: Generated<number>;
-  last_name: Generated<string>;
-  mobileNumber: string;
-  nationalCode: string;
-  type: "admin" | "branchUser" | "groupUser";
+export interface Users {
+  access_level: Generated<"admin" | "viewer">;
+  created_at: Generated<Date>;
+  id: Generated<string>;
+  password_hash: string;
+  username: string;
 }
 
 export interface DB {
-  access_permissions: AccessPermissions;
-  branch_provinces: BranchProvinces;
-  branch_user: BranchUser;
-  branches: Branches;
-  group_user: GroupUser;
-  groups: Groups;
-  permissions: Permissions;
-  position_permission: PositionPermission;
-  positions: Positions;
-  table_data: TableData;
-  table_definition: TableDefinition;
-  table_log: TableLog;
-  table_series: TableSeries;
-  table_title: TableTitle;
-  user: User;
+  devices: Devices;
+  network_logs: NetworkLogs;
+  test_configs: TestConfigs;
+  users: Users;
 }
